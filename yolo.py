@@ -1,8 +1,6 @@
 from ultralytics import YOLO
 
-model = YOLO('yolov8x') #load model
+# model = YOLO('models/best-80.pt') #load model
+model = YOLO('yolov8x')
 
-results = model.predict('input_video.mp4', save=True)
-print(results)
-for box in results[0].boxes:
-    print(box)
+results = model.track('input_video/input_video.mp4', conf=0.2,save=True)
